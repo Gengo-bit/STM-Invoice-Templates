@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            color: #fff;
+            background: #222;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: transparent;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 14px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4c542;
+            color: #333;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .header-table {
+            background: transparent;
+            color: #fff;
+            padding: 15px;
+        }
+        .header-table td {
+            border: none;
+            vertical-align: middle;
+        }
+        .header-table img {
+            max-width: 100px;
+            vertical-align: middle;
+        }
+        .invoice-title{
+            border-top: 3px solid #f4c542;
+            padding-top: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            font-weight: 800;
+            color: #f9d573;
+        }
+        .left-align {
+            text-align: left;
+        }
+        .right-align {
+            text-align: right;
+        }
+        .center-align {
+            text-align: center;
+        }
+        .yellow{
+            color: #f9d573;
+        }
+        .customer-info, .invoice-info {
+            background: transparent;
+            padding: 12px;
+            border-radius: 5px;
+        }
+        .summary-table {
+            margin-top: 20px;
+            width: 50%;
+            float: right;
+        }
+        .summary-table td {
+            font-weight: bold;
+        }
+        .summary-table tr:last-child td {
+            background: #f4c542;
+            color: #333;
+            font-size: 18px;
+        }
+        p {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <table class="header-table">
+        <tr>
+            <td class="left-align">
+                <img src="https://i.imgur.com/QMfEmS2.png" width="100">
+            </td>
+            <td class="right-align">
+                <p>Septic Tank Monitoring System</p>
+                <p>A. Tumulak Street, Gun-ob</p>
+                <p>paulcorsino28@gmail.com</p>
+            </td>
+        </tr>
+    </table>
+    
+    <h2 class="center-align invoice-title">Invoice No. {{formatDate(now; "x")}}</h2>
+
+    <table>
+        <tr>
+            <td class="customer-info">
+                <p><strong>Customer Info:</strong></p>
+                <p>{{3.`First Name [ex. John]`}} {{3.`Middle Initial  [ex. I.]`}} {{3.`Last Name  [ex. Doe]`}}</p>
+                <p>{{3.`Shipping Address  [ex. A. Tumulak Street, Gun-ob]`}}</p>
+                <p>{{3.`Email Address  [ex. johndoe@gmail.com]`}}</p>
+            </td>
+            <td class="right-align invoice-info">
+                <p><strong>Date Issued:</strong> {{formatDate(now; "MM/DD/YYYY")}}</p>
+                <p><strong>Due Date:</strong> {{formatDate(addMonths(now; 5); "MM/DD/YYYY")}}</p>
+                <p><strong>Payment Method:</strong> {{3.`Payment Method`}}</p>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <h3>Order Details</h3>
+    <table>
+        <thead>
+            <tr>
+                <th><strong>Product</strong></th>
+                <th><strong>Quantity</strong></th>
+                <th><strong>Price</strong></th>
+                <th><strong>Subtotal</strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{44.text}}
+        </tbody>
+    </table>
+
+    <table class="summary-table">
+        <tr>
+            <td class="right-align">VAT (12%):</td>
+            <td class="right-align">₱{{get(49.result * 0.12)}}</td>
+        </tr>
+        <tr>
+            <td class="right-align">Grand Total:</td>
+            <td class="right-align"><strong>₱{{get(49.result * 1.12)}}</strong></td>
+        </tr>
+    </table>
+    <br>
+    <p class="center-align">Your products will be delivered to <strong><span class="yellow">{{3.`Shipping Address  [ex. A. Tumulak Street, Gun-ob]`}}</span></strong> by <strong><span class="yellow">{{formatDate(addMonths(now; 2); "MMM D, YYYY")}}</span></strong>.</p><br>
+    <p class="center-align"><strong>Thank you for your business!</strong></p>
+</body>
+</html>

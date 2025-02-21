@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: transparent;
+            margin: 0;
+            padding: 20px;
+            color: #fff;
+        }
+        .invoice-container {
+            width: 100%;
+            max-width: 700px;
+            margin: auto;
+            background: linear-gradient(to bottom, #222, #111);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            border-top: 6px solid #f4c542;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #f4c542;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .logo img {
+            max-width: 140px;
+        }
+        .invoice-number {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 730;
+            color: #f4c542;
+            margin-bottom: 25px;
+        }
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+        .invoice-header div {
+            text-align: left;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .invoice-header div:last-child {
+            text-align: right;
+        }
+        .details-table, table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 14px;
+            text-align: left;
+        }
+        th {
+            background: #f4c542;
+            color: #222;
+            font-size: 15px;
+            text-transform: uppercase;
+        }
+        td {
+            background: #222;
+            color: #fff;
+        }
+        .totals {
+            text-align: right;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="header">
+            <div class="logo">
+                <img src="https://i.imgur.com/QMfEmS2.png" alt="Company Logo">
+            </div>
+            <div class="company-details">
+                Septic Tank Monitoring System<br>
+                A. Tumulak Street, Gun-ob<br>
+                paulcorsino28@gmail.com
+            </div>
+        </div>
+
+        <div class="invoice-number">Invoice No. {{formatDate(now; "x")}}</div>
+        
+        <div class="invoice-header">
+            <div>
+                <strong>Customer Info:</strong><br>
+                {{3.`First Name [ex. John]`}} {{3.`Middle Initial  [ex. I.]`}} {{3.`Last Name  [ex. Doe]`}}<br>
+                {{3.`Shipping Address  [ex. A. Tumulak Street, Gun-ob]`}}<br>
+                {{3.`Email Address  [ex. johndoe@gmail.com]`}}
+            </div>
+            <div>
+                <strong>Date Issued:</strong> {{formatDate(now; "MM/DD/YYYY")}}<br>
+                <strong>Due Date:</strong> {{formatDate(addMonths(now; 5); "MM/DD/YYYY")}}<br>
+                <strong>Payment Method:</strong> {{3.`Payment Method`}}<br>
+            </div>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{44.text}}
+            </tbody>
+        </table>
+        
+        <p class="totals">VAT (12%): <strong>₱{{get(49.result * 0.12)}}</strong></p>
+        <p class="totals">Grand Total: <strong>₱{{get(49.result * 1.12)}}</strong></p>
+        
+        <p class="footer">Your products will be delivered at <strong>{{3.`Shipping Address  [ex. A. Tumulak Street, Gun-ob]`}}</strong> by <strong>{{formatDate(addMonths(now; 2); "MMM D, YYYY")}}</strong></p>
+        
+        <p class="footer">Thank you for your business!</p>
+    </div>
+</body>
+</html>
